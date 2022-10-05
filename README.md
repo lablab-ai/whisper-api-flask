@@ -1,10 +1,3 @@
----
-title: "Creating OpenAIs Whisper API in a Docker Container"
-description: "In this tutorial you will learn how to create an API for OpenAI's Whisper in a Docker container."
-image: "https://storage.googleapis.com/lablab-static-eu/images/tutorials/whisper-tut-thumbnail.png"
-authorUsername: Flafi
----
-
 ## What is Whisper?
 
 Whisper is an automatic State-of-the-Art speech recognition system from OpenAI that has been trained on 680,000 hours 
