@@ -1,7 +1,13 @@
 from flask import Flask, abort, request
 from tempfile import NamedTemporaryFile
 import whisper
+import openai
 import torch
+# GPT-3 functions
+import gpt3
+
+# GPT-3 API Key
+openai.api_key = "MY_API_KEY"
 
 # Check if NVIDIA GPU is available
 torch.cuda.is_available()
@@ -37,10 +43,14 @@ def handler():
         handle.save(temp)
         # Let's get the transcript of the temporary file.
         result = model.transcribe(temp.name)
+        text = result['text']
+        # Let's get the summary of the soundfile
+        summary = gpt3.gpt3complete(text)
         # Now we can store the result object for this file.
         results.append({
             'filename': filename,
-            'transcript': result['text'],
+            'transcript': text.strip(),
+            'summary': summary.strip(),
         })
 
     # This will be automatically converted to JSON.
