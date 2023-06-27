@@ -113,6 +113,8 @@ docker build -t whisper-api .
 docker run -p 5000:5000 whisper-api
 ```
 
+If you are having errors on MacOS please add `RUN pip3 install markupsafe==2.0.1` to the dockerfile. 
+
 ## How to run the container with [Podman](https://podman.io/):
 
 ``` bash
