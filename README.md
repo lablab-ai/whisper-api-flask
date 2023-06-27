@@ -113,6 +113,27 @@ docker build -t whisper-api .
 docker run -p 5000:5000 whisper-api
 ```
 
+## How to run the container with [Podman](https://podman.io/):
+
+``` bash
+cd /tmp
+git clone https://github.com/lablab-ai/whisper-api-flask whisper
+cd whisper
+mv Dockerfile Containerfile
+podman build --network="host" -t whisper .
+podman run --network="host" -p 5000:5000 whisper
+```
+
+Then run:
+
+``` bash
+curl -F "file=@/path/to/filename.mp3" http://localhost:5000/whisper
+```
+
+Also, from the README:
+
+> In result you should get a JSON object with the transcript in it.
+
 ## How to test the API?
 1. You can test the API by sending a POST request to the route `http://localhost:5000/whisper` with a file in it. Body should be form-data.
 2. You can use the following curl command to test the API:
